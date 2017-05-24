@@ -3,9 +3,7 @@ package com.nojac.models;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Arrays;
 import java.util.Date;
-import java.util.List;
 
 /**
  * Created by nickolas on 5/23/17.
@@ -14,11 +12,15 @@ import java.util.List;
 @Table(name = "nj_event")
 public class NjEvent {
 
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "eventId", insertable = false)
     private long eventId;
+
+    @ManyToOne
+    @JoinColumn(name = "calendarId", referencedColumnName = "calendarId", foreignKey = @ForeignKey(name = "fk_calendar"))
+//    , referencedColumnName = "stockId", foreignKey = @ForeignKey(name = "fk_stock")
+    private Calendar calendar;
 
     @Column(name = "title")
     private String title;
@@ -67,6 +69,14 @@ public class NjEvent {
 
     public void setEventId(long eventId) {
         this.eventId = eventId;
+    }
+
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
 
     public String getTitle() {
@@ -138,5 +148,5 @@ public class NjEvent {
                 ", endDate=" + endDate +
                 '}';
     }
-    
+
 }
