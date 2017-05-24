@@ -5,6 +5,7 @@ import org.hibernate.annotations.Type;
 import javax.persistence.*;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by nickolas on 5/23/17.
@@ -37,8 +38,11 @@ public class NjEvent {
     @Column(name = "endTime")
     private Date endTime;
 
-    @Column(name = "repeat")
-    private int[] repeat;
+//    @ElementCollection
+//    @CollectionTable(name="RepeatDays", joinColumns=@JoinColumn(name="eventId"))
+//  mia lusi einai i apo pamw me element collection alla gia na pofugoume to join to vazw ws string (estw proswrina)
+    @Column(name = "repeatDays")
+    private String repeatDays;
     //size:7 mia thesi gia kathe mera tis evdomadas
 
     @Type(type="date")
@@ -97,12 +101,12 @@ public class NjEvent {
         this.endTime = endTime;
     }
 
-    public int[] getRepeat() {
-        return repeat;
+    public String getRepeatDays() {
+        return repeatDays;
     }
 
-    public void setRepeat(int[] repeat) {
-        this.repeat = repeat;
+    public void setRepeatDays(String repeatDays) {
+        this.repeatDays = repeatDays;
     }
 
     public Date getStartDate() {
@@ -129,9 +133,10 @@ public class NjEvent {
                 ", description='" + description + '\'' +
                 ", startTime=" + startTime +
                 ", endTime=" + endTime +
-                ", repeat=" + Arrays.toString(repeat) +
+                ", repeatDays='" + repeatDays + '\'' +
                 ", startDate=" + startDate +
                 ", endDate=" + endDate +
                 '}';
     }
+    
 }
