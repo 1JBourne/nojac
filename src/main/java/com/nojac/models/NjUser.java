@@ -14,7 +14,7 @@ public class NjUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userId", insertable = false)
+    @Column(name = "user_id", insertable = false)
     private long userId;
 
     @Column(name = "username", unique = true)

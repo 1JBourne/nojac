@@ -11,7 +11,7 @@ public class Attendant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "attendantId", insertable = false)
+    @Column(name = "attendant_id", insertable = false)
     private long attendantId;
 
     //role?

@@ -14,11 +14,11 @@ public class NjEvent {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "eventId", insertable = false)
+    @Column(name = "event_id", insertable = false)
     private long eventId;
 
     @ManyToOne
-    @JoinColumn(name = "calendarId", referencedColumnName = "calendarId", foreignKey = @ForeignKey(name = "fk_calendar"))
+    @JoinColumn(name = "calendar_id", referencedColumnName = "calendar_id", foreignKey = @ForeignKey(name = "fk_calendar"))
 //    , referencedColumnName = "stockId", foreignKey = @ForeignKey(name = "fk_stock")
     private Calendar calendar;
 
@@ -31,29 +31,29 @@ public class NjEvent {
 
     @Temporal(TemporalType.TIMESTAMP)
     @Type(type="timestamp")
-    @Column(name = "startTime")
+    @Column(name = "start_time")
     private Date startTime;
     //required
 
     @Temporal(TemporalType.TIMESTAMP)
     @Type(type="timestamp")
-    @Column(name = "endTime")
+    @Column(name = "end_time")
     private Date endTime;
 
 //    @ElementCollection
 //    @CollectionTable(name="RepeatDays", joinColumns=@JoinColumn(name="eventId"))
 //  mia lusi einai i apo pamw me element collection alla gia na pofugoume to join to vazw ws string (estw proswrina)
-    @Column(name = "repeatDays")
+    @Column(name = "repeat_days")
     private String repeatDays;
     //size:7 mia thesi gia kathe mera tis evdomadas
 
     @Type(type="date")
-    @Column(name = "startDate")
+    @Column(name = "start_date")
     private Date startDate;
     //required
 
     @Type(type="date")
-    @Column(name = "endDate")
+    @Column(name = "end_date")
     private Date endDate;
 
     //TODO thelei boolean gia to repeat?

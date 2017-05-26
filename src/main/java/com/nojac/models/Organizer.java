@@ -11,7 +11,7 @@ public class Organizer {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "organizerId", insertable = false)
+    @Column(name = "organizer_id", insertable = false)
     private long organizerId;
 
     //role?

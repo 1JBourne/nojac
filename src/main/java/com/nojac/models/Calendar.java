@@ -1,6 +1,8 @@
 package com.nojac.models;
 
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by nickolas on 5/23/17.
@@ -10,15 +12,27 @@ import javax.persistence.*;
 public class Calendar {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "calendarId", insertable = false)
+    @Column(name = "calendar_id", insertable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private long calendarId;
 
-    @Column(name = "calendarName")
+    @Column(name = "calendar_name")
     private String calendarName;
 
     @Column(name = "type")
     private String type;
+
+    @OneToMany(mappedBy = "calendar")
+    private Set<NjEvent> njEvents= new HashSet<>(
+            0);
+
+    public Set<NjEvent> getNjEvents() {
+        return njEvents;
+    }
+
+    public void setNjEvents(Set<NjEvent> njEvents) {
+        this.njEvents = njEvents;
+    }
 
     public Calendar() {
         //def ctr
