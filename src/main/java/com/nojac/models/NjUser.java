@@ -1,5 +1,6 @@
 package com.nojac.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -35,6 +36,12 @@ public class NjUser {
     @Type(type="timestamp")
     @Column(name = "updated")
     private Date updated;
+
+    @OneToOne
+    @JoinColumn(name = "user_id")
+    @JsonBackReference
+    private Calendar calendar;
+
 
     @PrePersist
     protected void onCreate() {
@@ -100,6 +107,14 @@ public class NjUser {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
+    }
+
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
     }
 
     @Override
