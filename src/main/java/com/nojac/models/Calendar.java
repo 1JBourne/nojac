@@ -22,17 +22,17 @@ public class Calendar {
     @Column(name = "type")
     private String type;
 
-    @OneToMany(mappedBy = "calendar")
-    private Set<NjEvent> njEvents= new HashSet<>(
-            0);
-
-    public Set<NjEvent> getNjEvents() {
-        return njEvents;
-    }
-
-    public void setNjEvents(Set<NjEvent> njEvents) {
-        this.njEvents = njEvents;
-    }
+//    @OneToMany(mappedBy = "calendar")
+//    private Set<NjEvent> njEvents= new HashSet<>(
+//            0);
+//
+//    public Set<NjEvent> getNjEvents() {
+//        return njEvents;
+//    }
+//
+//    public void setNjEvents(Set<NjEvent> njEvents) {
+//        this.njEvents = njEvents;
+//    }
 
     public Calendar() {
         //def ctr

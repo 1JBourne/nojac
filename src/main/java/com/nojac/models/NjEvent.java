@@ -29,16 +29,16 @@ public class NjEvent {
     @Column(name = "description")
     private String description;
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Type(type="timestamp")
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Type(type="timestamp")
     @Column(name = "start_time")
-    private Date startTime;
+    private String startTime;
     //required
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Type(type="timestamp")
+//    @Temporal(TemporalType.TIMESTAMP)
+//    @Type(type="timestamp")
     @Column(name = "end_time")
-    private Date endTime;
+    private String endTime;
 
 //    @ElementCollection
 //    @CollectionTable(name="RepeatDays", joinColumns=@JoinColumn(name="eventId"))
@@ -95,19 +95,19 @@ public class NjEvent {
         this.description = description;
     }
 
-    public Date getStartTime() {
+    public String getStartTime() {
         return startTime;
     }
 
-    public void setStartTime(Date startTime) {
+    public void setStartTime(String startTime) {
         this.startTime = startTime;
     }
 
-    public Date getEndTime() {
+    public String getEndTime() {
         return endTime;
     }
 
-    public void setEndTime(Date endTime) {
+    public void setEndTime(String endTime) {
         this.endTime = endTime;
     }
 
