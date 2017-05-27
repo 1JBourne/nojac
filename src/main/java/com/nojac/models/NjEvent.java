@@ -1,5 +1,6 @@
 package com.nojac.models;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -19,6 +20,7 @@ public class NjEvent {
 
     @ManyToOne
     @JoinColumn(name = "calendar_id", referencedColumnName = "calendar_id", foreignKey = @ForeignKey(name = "fk_calendar"))
+    @JsonBackReference
 //    , referencedColumnName = "stockId", foreignKey = @ForeignKey(name = "fk_stock")
     private Calendar calendar;
 

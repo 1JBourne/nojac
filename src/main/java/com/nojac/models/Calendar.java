@@ -1,5 +1,7 @@
 package com.nojac.models;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -22,17 +24,18 @@ public class Calendar {
     @Column(name = "type")
     private String type;
 
-//    @OneToMany(mappedBy = "calendar")
-//    private Set<NjEvent> njEvents= new HashSet<>(
-//            0);
-//
-//    public Set<NjEvent> getNjEvents() {
-//        return njEvents;
-//    }
-//
-//    public void setNjEvents(Set<NjEvent> njEvents) {
-//        this.njEvents = njEvents;
-//    }
+    @OneToMany(mappedBy = "calendar")
+    @JsonManagedReference
+    private Set<NjEvent> njEvents= new HashSet<>(
+            0);
+
+    public Set<NjEvent> getNjEvents() {
+        return njEvents;
+    }
+
+    public void setNjEvents(Set<NjEvent> njEvents) {
+        this.njEvents = njEvents;
+    }
 
     public Calendar() {
         //def ctr
