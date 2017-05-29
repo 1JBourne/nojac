@@ -14,7 +14,7 @@ public class Organizer {
     @Column(name = "organizer_id", insertable = false)
     private long organizerId;
 
-    //role?
+
 
     public Organizer() {
         //default ctr

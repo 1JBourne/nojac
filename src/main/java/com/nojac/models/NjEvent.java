@@ -1,10 +1,15 @@
 package com.nojac.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Created by nickolas on 5/23/17.
@@ -20,9 +25,22 @@ public class NjEvent {
 
     @ManyToOne
     @JoinColumn(name = "calendar_id", referencedColumnName = "calendar_id", foreignKey = @ForeignKey(name = "fk_calendar"))
-    @JsonBackReference
-//    , referencedColumnName = "stockId", foreignKey = @ForeignKey(name = "fk_stock")
+    @JsonIgnoreProperties("njEvents")
+    //    @JsonManagedReference
     private Calendar calendar;
+
+    @ManyToMany
+    @JoinTable(name="event_attendant", joinColumns=@JoinColumn(name="event_id"), inverseJoinColumns=@JoinColumn(name="attendant_id"))
+    @JsonIgnoreProperties("events")
+    private Set<Attendant> attendants = new HashSet<>(0);
+
+    public Set<Attendant> getAttendants() {
+        return attendants;
+    }
+
+    public void setAttendants(Set<Attendant> attendants) {
+        this.attendants = attendants;
+    }
 
     @Column(name = "title")
     private String title;

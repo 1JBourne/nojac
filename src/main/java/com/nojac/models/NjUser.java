@@ -1,6 +1,7 @@
 package com.nojac.models;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
@@ -39,9 +40,16 @@ public class NjUser {
 
     @OneToOne
     @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @JsonIgnoreProperties("njUser")
     private Calendar calendar;
 
+    public Calendar getCalendar() {
+        return calendar;
+    }
+
+    public void setCalendar(Calendar calendar) {
+        this.calendar = calendar;
+    }
 
     @PrePersist
     protected void onCreate() {
@@ -107,14 +115,6 @@ public class NjUser {
 
     public void setUpdated(Date updated) {
         this.updated = updated;
-    }
-
-    public Calendar getCalendar() {
-        return calendar;
-    }
-
-    public void setCalendar(Calendar calendar) {
-        this.calendar = calendar;
     }
 
     @Override

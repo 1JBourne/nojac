@@ -1,7 +1,6 @@
 package com.nojac.models;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.*;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -26,13 +25,26 @@ public class Calendar {
     private String type;
 
     @OneToMany(mappedBy = "calendar")
-    @JsonManagedReference
+    @JsonIgnoreProperties("calendar")
+//    @JsonBackReference
     private Set<NjEvent> njEvents= new HashSet<>(
             0);
 
     @OneToOne(mappedBy = "calendar")
-    @JsonBackReference
-    private NjUser NjUser;
+    @JsonIgnoreProperties("calendar")
+    private NjUser njUser;
+
+    public NjUser getNjUser() {
+        return njUser;
+    }
+
+    public void setNjUser(NjUser njUser) {
+        this.njUser = njUser;
+    }
+
+    public Calendar() {
+        //def ctr
+    }
 
     public Set<NjEvent> getNjEvents() {
         return njEvents;
@@ -40,10 +52,6 @@ public class Calendar {
 
     public void setNjEvents(Set<NjEvent> njEvents) {
         this.njEvents = njEvents;
-    }
-
-    public Calendar() {
-        //def ctr
     }
 
     public long getCalendarId() {
@@ -68,14 +76,6 @@ public class Calendar {
 
     public void setType(String type) {
         this.type = type;
-    }
-
-    public NjUser getNjUser() {
-        return NjUser;
-    }
-
-    public void setNjUser(NjUser njUser) {
-        NjUser = njUser;
     }
 
     @Override
