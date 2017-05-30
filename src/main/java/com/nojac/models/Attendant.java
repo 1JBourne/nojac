@@ -22,18 +22,28 @@ public class Attendant {
     @JsonIgnoreProperties("attendants")
     private Set<NjEvent> events = new HashSet<>(0);
 
+    @OneToOne
+    @JsonIgnoreProperties("calendar")
+    private NjUser njUser;
+
+    public NjUser getNjUser() {
+        return njUser;
+    }
+
+    public void setNjUser(NjUser njUser) {
+        this.njUser = njUser;
+    }
+
+    public Attendant() {
+        //default ctr
+    }
+
     public Set<NjEvent> getEvents() {
         return events;
     }
 
     public void setEvents(Set<NjEvent> events) {
         this.events = events;
-    }
-
-    //role?
-
-    public Attendant() {
-        //default ctr
     }
 
     public long getAttendantId() {
